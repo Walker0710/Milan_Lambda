@@ -21,6 +21,10 @@ const Register = () => {
     }
   };
 
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
+
   return (
     <div className='register-all'>
       <h2 className='register-heading'>Register with email</h2>
@@ -29,7 +33,7 @@ const Register = () => {
         <div className='register-email-all'>
           <label className='register-email-heading'>Username:</label>
           <input
-          className='register-email-input'
+            className='register-email-input'
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -49,7 +53,7 @@ const Register = () => {
         <div className='register-email-all'>
           <label className='register-email-heading'>Password:</label>
           <input
-          className='register-email-input'
+            className='register-email-input'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -58,6 +62,9 @@ const Register = () => {
         </div>
         {error && <p>{error}</p>}
         <button className='register-button' type="submit">Register</button>
+
+        <p>Already have an account?</p>
+        <button onClick={handleLoginClick}>Login</button>
       </form>
     </div>
   );

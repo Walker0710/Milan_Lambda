@@ -14,10 +14,14 @@ const Login = () => {
     try {
       const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
-      navigate('/blogs');
+      navigate('/home');
     } catch (err) {
       setError('Invalid credentials');
     }
+  };
+
+  const handleRegisterClick = () => {
+    navigate('/');
   };
 
   return (
@@ -47,6 +51,9 @@ const Login = () => {
         </div>
         {error && <p>{error}</p>}
         <button className='login-button' type="submit">Continue</button>
+
+        <p>Don't have an account?</p>
+      <button onClick={handleRegisterClick}>Register</button>
       </form>
     </div>
   );
