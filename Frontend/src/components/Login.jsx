@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -16,7 +15,7 @@ const Login = () => {
       localStorage.setItem('token', res.data.token);
       navigate('/home');
     } catch (err) {
-      setError('Invalid credentials');
+      setError('Invalid crede');
     }
   };
 

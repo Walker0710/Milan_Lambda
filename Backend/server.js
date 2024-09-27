@@ -17,7 +17,11 @@ app.use(cors({
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/user'));
+<<<<<<< HEAD
 app.use('/api/clubs', require('./routes/clubs'));
+=======
+// app.use('/api/addQuestion', require('./routes/addQuestion'));
+>>>>>>> bb71c72574a2a12a0b8d8d69edb6439e2d75858d
 
 const PORT = process.env.PORT || 5000;
 
