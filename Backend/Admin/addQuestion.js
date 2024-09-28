@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const verifyAdmin = require('../middlewares/verifyAdmin');
-const { addQuestion } = require('../controllers/addQuestionController')
+const verifyLambdaAdmin = require('../middlewares/verifyLambdaAdmin');
+const verifyInferoAdmin = require('./verifyInferoAdmin');
+const { addLambdaQuestion, addInferoQuestion } = require('../controllers/addQuestionController');
 
-router.post('/addQuestion', verifyAdmin, addQuestion);
+router.post('/addLambdaQuestion', verifyLambdaAdmin, addLambdaQuestion);
+router.post('/addInferoQuestion', verifyInferoAdmin, addInferoQuestion);
 
 module.exports = router;
