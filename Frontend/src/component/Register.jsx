@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const BACKEND_URL = 'http://localhost:5000';
+
+
+
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -12,7 +16,7 @@ const Register = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
+      const res = await axios.post( BACKEND_URL + '/api/auth/register', { username, email, password });
       localStorage.setItem('token', res.data.token);
       navigate('/home');
     } catch (err) {
@@ -32,7 +36,7 @@ const Register = () => {
         <div className='register-email-all'>
           <label className='register-email-heading'>Username:</label>
           <input
-            className='register-email-input'
+          className='register-email-input'
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
@@ -52,7 +56,7 @@ const Register = () => {
         <div className='register-email-all'>
           <label className='register-email-heading'>Password:</label>
           <input
-            className='register-email-input'
+          className='register-email-input'
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -62,8 +66,9 @@ const Register = () => {
         {error && <p>{error}</p>}
         <button className='register-button' type="submit">Register</button>
 
+
         <p>Already have an account?</p>
-        <button onClick={handleLoginClick}>Login</button>
+        <button type="button" onClick={handleLoginClick}>Login</button>
       </form>
     </div>
   );

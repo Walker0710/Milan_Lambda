@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
-import Home from './pages/Home/Home';
-import Lambda from './pages/Lambda/Lambda';
-import Infero from './pages/Infero/Infero';
+import Login from './component/Login';
+import Register from './component/Register';
+import Home from './component/Home';
+import Lambda from './component/LambdaQuiz';
+import Infero from './component/InferoQuiz';
+import Leaderboard from './component/Leaderboard';
+import Profile from './component/Profile';
 
 import './App.css';
 
@@ -18,6 +20,8 @@ function AppContent() {
         <Route path='/home' exact element={<Home />} />
         <Route path='/lambda' exact element={<Lambda />} />
         <Route path='/infero' exact element={<Infero />} />
+        <Route path='/leaderboard' exact element={<Leaderboard />} />
+        <Route path='/profile' exact element={<Profile />} />
       </Routes>
     </>
   );

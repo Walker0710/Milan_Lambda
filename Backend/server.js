@@ -1,30 +1,32 @@
 const express = require('express');
-const dotenv = require('dotenv');
-const connectDB = require('./config/db');
 const cors = require('cors');
+const dotenv = require('dotenv');
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
+const clubRoutes = require('./routes/clubRoutes');
+const leaderboard = require('./routes/leaderboardRoutes');
+const connectDB = require('./config/db');
 
 dotenv.config();
 
 const app = express();
+const port = process.env.PORT || 5000;
 
 connectDB();
 
 app.use(express.json());
 app.use(cors({
     origin: 'http://localhost:5173',
+    methods: 'GET,POST',
     credentials: true,
 }));
 
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/users', require('./routes/user'));
-<<<<<<< HEAD
-app.use('/api/clubs', require('./routes/clubs'));
-=======
-// app.use('/api/addQuestion', require('./routes/addQuestion'));
->>>>>>> bb71c72574a2a12a0b8d8d69edb6439e2d75858d
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
+app.use('/api/clubs', clubRoutes);
+app.use('/api/leaderboard', leaderboard);
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
