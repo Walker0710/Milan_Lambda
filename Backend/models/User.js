@@ -24,10 +24,6 @@ const userSchema = new mongoose.Schema({
     type: Number, 
     default: 0 
   },
-  lastPlayed: { 
-    type: Date, 
-    default: null 
-  }
 });
 
 userSchema.pre('save', async function (next) {
